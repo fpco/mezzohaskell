@@ -87,7 +87,7 @@ self will thank you.
 the system is improving. In the interim, there are some additional tools people
 use as workarounds. Probably the most popular is `cabal-dev`.
 
-__Note__: A newer option is virthualenv. This chapter focuses on `cabal-dev`
+__Note__: A newer option is virtualenv. This chapter focuses on `cabal-dev`
 instead both because the author is more familiar with it, and because it works
 on more OSes.
 
