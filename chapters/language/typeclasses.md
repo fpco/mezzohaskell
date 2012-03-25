@@ -65,6 +65,8 @@ import qualified Data.Text as T
 
 class Unpack a b where
     unpack :: a -> [b]
+instance Unpack [a] a where
+    unpack = id
 instance Unpack S.ByteString Word8 where
     unpack = S.unpack
 instance Unpack T.Text Char where
@@ -146,6 +148,9 @@ import qualified Data.Text as T
 class Unpack a where
     type Elem a
     unpack :: a -> [Elem a]
+instance Unpack [a] where
+    type Elem [a] = a
+    unpack = id
 instance Unpack S.ByteString where
     type Elem S.ByteString = Word8
     unpack = S.unpack
@@ -169,6 +174,15 @@ __FIXME__ need more input: Describe why to use one or the other. Are there any u
 __FIXME__ include an example of using an associated data family.
 
 ## Equality constraints
+
+Suppose we now want to compare two instances of `Unpack`, extending the
+type family example. The two instances of `Unpack` need to unpack to the
+same data type. This can be expressed with an equality constraint:
+
+```haskell
+unpackEquals :: (Unpack a, Unpack b, Eq (Elem a), Eq (Elem b), Elem a ~ Elem b)
+unpackEquals x y = unpack x == unpack y
+```
 
 __FIXME__ Likely want a better example, this is the one that came to mind.
 
