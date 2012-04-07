@@ -36,8 +36,9 @@ main = do
 
 We imported two modules. `Data.Conduit` contains the basics of the library.
 `Data.Conduit.List` contains a number of functions that let us interact with
-`conduit` as we would with lists (we'll see examples later). Due to name
-clashes, we normally import the module qualified.
+`Source`s and `Sink`s (and, as we'll see later, `Conduit`s) as we would with
+lists (we'll see examples later). Due to name clashes, we normally import the
+module qualified.
 
 We're using two functions from `Data.Conduit.List`: `sourceList` produces a new
 `Source` from a list of values, and `consume` is a `Sink` which will consume a
