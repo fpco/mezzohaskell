@@ -65,6 +65,8 @@ import qualified Data.Text as T
 
 class Unpack a b where
     unpack :: a -> [b]
+instance Unpack [a] a where
+    unpack = id
 instance Unpack S.ByteString Word8 where
     unpack = S.unpack
 instance Unpack T.Text Char where
@@ -146,6 +148,9 @@ import qualified Data.Text as T
 class Unpack a where
     type Elem a
     unpack :: a -> [Elem a]
+instance Unpack [a] where
+    type Elem [a] = a
+    unpack = id
 instance Unpack S.ByteString where
     type Elem S.ByteString = Word8
     unpack = S.unpack
@@ -170,25 +175,12 @@ __FIXME__ include an example of using an associated data family.
 
 ## Equality constraints
 
-__FIXME__ Likely want a better example, this is the one that came to mind.
+Suppose we now want to compare two instances of `Unpack`, extending the
+type family example. The two instances of `Unpack` need to unpack to the
+same data type. This can be expressed with an equality constraint:
 
 ```haskell
-{-# LANGUAGE TypeFamilies #-}
-{-# LANGUAGE FlexibleInstances #-}
-import Data.Text (Text, pack)
-
-class ToUrl a where
-    toUrl :: a -> ([Text], [(Text, Text)])
-instance ToUrl [Text] where
-    toUrl ts = (ts, [])
-instance ToUrl [String] where
-    toUrl ss = (map pack ss, [])
--- Bad instance ToUrl a => ToUrl (a, [(Text, Text)]) where
-instance (ToUrl a, qs ~ [(Text, Text)]) => ToUrl (a, qs) where
-    toUrl (a, qs1) =
-        let (ps, qs2) = toUrl a
-         in (ps, qs1 ++ qs2)
-
-main :: IO ()
-main = print $ toUrl (["foo"], [])
+unpackEquals :: (Unpack a, Unpack b, Eq (Elem a), Eq (Elem b), Elem a ~ Elem b)
+                -> a -> b -> Bool
+unpackEquals x y = unpack x == unpack y
 ```
