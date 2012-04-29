@@ -24,7 +24,7 @@ data Successor a = Successor
 ```
 
 This allows us to do some really interesting things. For example, we can create 
-a list type where we know it's length at compile time:
+a list type where we know its length at compile time:
 
 ```haskell
 data Vec a l where
@@ -55,7 +55,7 @@ appendV Nil ys = ys
 ```
 
 It's nice to be able to do this, but you may be asking "what does it buy us?". 
-The next function will demonstrate it's real use. If you pass two differently 
+The next function will demonstrate its real use. If you pass two differently 
 sized lists into the `zip` function in prelude, the resultant list will be the 
 same size as the smaller one, but knowing the length at compile time allows us 
 to prevent any such truncation:
@@ -120,7 +120,7 @@ it's very easy to end up with irrecoverable type errors like:
 Couldn't match type `l' with `Plus l Zero'
 ```
 
-Another problem is demonstrated by the `filter` function. What's it's type? 
+Another problem is demonstrated by the `filter` function. What's its type? 
 It's very easy to get bitten, but being able to create descriptive types like 
 this is a hugely useful skill to an accomplished Haskeller when used 
 appropriately.
