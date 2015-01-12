@@ -77,7 +77,8 @@ main = do
     print $ length $ unpack foo
 ```
 
-    Unfortunately, when we try to compile this, we get a confusing error message:
+Unfortunately, when we try to compile this, we get a confusing error message:
+
     test.hs:15:22:
         No instance for (Unpack T.Text a0)
           arising from a use of `unpack'
