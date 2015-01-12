@@ -292,7 +292,7 @@ removed](https://github.com/haskell/primitive/pull/19). In fact, at the time
 you're reading this, it may already be gone!
 
 `PrimState` is an associated type giving the type of the state token. For `IO`,
-that's `RealWorld, and for `ST s`, it's `s`. `primitive` gives a way to lift
+that's `RealWorld`, and for `ST s`, it's `s`. `primitive` gives a way to lift
 the internal implementation of both `IO` and `ST` to the monad under question.
 
 __Exercise__: Write implementations of the `PrimMonad IO` and `PrimMonad (ST s)` instances, and compare against the real ones.
