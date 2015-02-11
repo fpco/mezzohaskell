@@ -110,6 +110,21 @@ text).
 * Pragmas (UNPACK, INLINE, ...)
 * Heap profiling
 
+## Misc topics (not sorted in yet, just added now)
+
+* Builders
+* Monad transformers: [EitherT vs IO](http://stackoverflow.com/questions/25752900/exceptions-and-monad-transformers/25753497#25753497)
+* [Wrap exceptions to provide context](http://stackoverflow.com/questions/27346380/how-to-wrap-exceptions-to-provide-context)
+* [General dislike of exceptions](http://www.reddit.com/r/haskell/comments/2ety9f/new_blog_post_dealing_with_asynchronous/ck3fkbp)
+* STM: blocking semantics around mutable variables
+* The async package
+* exceptions package and using MonadThrow
+* Tutorial on Vector
+* Concurrency patterns: worker threads, signals, blocking on TVars
+* Cabal CPP macros. Paths module. Flags. How to test for windows. Defaulting macros for ghci. Flags to either use new library version or another package (bytestring-builder) and set a CPP variable.
+* Exceptions problems. Can't wrap. Can't have two exceptions. No idea how exception was thrown.
+* Proper way to call external programs
+
 # Organizational questions
 
 * Should the book be kept on Github?
