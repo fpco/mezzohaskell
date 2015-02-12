@@ -124,6 +124,7 @@ text).
 * Cabal CPP macros. Paths module. Flags. How to test for windows. Defaulting macros for ghci. Flags to either use new library version or another package (bytestring-builder) and set a CPP variable.
 * Exceptions problems. Can't wrap. Can't have two exceptions. No idea how exception was thrown.
 * Proper way to call external programs
+* Haskell glossary. Define commonly used but not-commonly-understood terms (example: covariant, contravaraint, positive position, negative position)
 
 # Organizational questions
 
