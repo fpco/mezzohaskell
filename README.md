@@ -83,6 +83,7 @@ text).
 ## Other libraries
 
 * system-filepath
+* esqueleto
 
 ## Open debates
 
@@ -125,6 +126,23 @@ text).
 * Exceptions problems. Can't wrap. Can't have two exceptions. No idea how exception was thrown.
 * Proper way to call external programs
 * Haskell glossary. Define commonly used but not-commonly-understood terms (example: covariant, contravaraint, positive position, negative position)
+
+## External content worth importing:
+
+This is starting off as a biased list of my own content. Others should feel free to add to it themselves.
+
+* Everything from: https://www.fpcomplete.com/user/snoyberg/library-documentation, especially once we have export-to-SoH functionality
+* https://www.fpcomplete.com/user/snoyberg/general-haskell/exceptions/exceptions-and-monad-transformers
+* https://www.fpcomplete.com/user/snoyberg/general-haskell/exceptions/catching-all-exceptions
+* https://www.fpcomplete.com/user/snoyberg/general-haskell/basics/functors-applicative-functors-and-monads
+* https://github.com/yesodweb/yesodweb.com-content/blob/master/book/asciidoc/web-application-interface.asciidoc
+* http://www.yesodweb.com/blog/2014/09/woes-multiple-package-versions
+* http://www.yesodweb.com/blog/2014/05/exceptions-cont-monads
+* http://www.yesodweb.com/blog/2014/03/network-conduit-async
+
+Stuff from Haskell Wiki?
+
+* https://wiki.haskell.org/Evaluation_order_and_state_tokens
 
 # Organizational questions
 
