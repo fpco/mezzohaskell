@@ -6,6 +6,11 @@ well understood. The goal is to cover the entire topic in a cohesive manner. If
 a specific section seems like it's not covering anything you don't already
 know, skim through it and move on to the next one.
 
+While this chapter is called "Primitive Haskell," the topics are very much
+GHC-specific. I avoided calling it "Primitive GHC" for fear of people assuming
+it was about the internals of GHC itself. To be clear: these topics apply to
+anyone compiling their Haskell code using the GHC compiler.
+
 Note that we will not be fully covering all topics here. There is a "further
 reading" section at the end of this chapter with links for more details.
 
@@ -201,7 +206,7 @@ instance](http://www.stackage.org/haddock/lts-1.0/base-4.7.0.2/src/GHC-Base.html
 
 ```haskell
 instance  Monad IO  where
-    m >> k    = thenIO
+    (>>) = thenIO
 
 thenIO :: IO a -> IO b -> IO b
 thenIO (IO m) k = IO $ \ s -> case m s of (# new_s, _ #) -> unIO k new_s
@@ -240,7 +245,7 @@ Let's compare the definitions of the `IO` and [`ST`](http://www.stackage.org/had
 
 ```haskell
 newtype IO   a = IO (State# RealWorld -> (# State# RealWorld, a #))
-newtype ST s a = IO (State# s         -> (# State# s,         a #))
+newtype ST s a = ST (State# s         -> (# State# s,         a #))
 ```
 
 Well *that* looks oddly similar. Said more precisely, `IO` is isomorphic to `ST
@@ -292,7 +297,7 @@ removed](https://github.com/haskell/primitive/pull/19). In fact, at the time
 you're reading this, it may already be gone!
 
 `PrimState` is an associated type giving the type of the state token. For `IO`,
-that's `RealWorld, and for `ST s`, it's `s`. `primitive` gives a way to lift
+that's `RealWorld`, and for `ST s`, it's `s`. `primitive` gives a way to lift
 the internal implementation of both `IO` and `ST` to the monad under question.
 
 __Exercise__: Write implementations of the `PrimMonad IO` and `PrimMonad (ST s)` instances, and compare against the real ones.
