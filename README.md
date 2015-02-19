@@ -110,6 +110,7 @@ text).
 * Strictness annotations
 * Pragmas (UNPACK, INLINE, ...)
 * Heap profiling
+* Looking at GHC core
 
 ## Misc topics (not sorted in yet, just added now)
 
